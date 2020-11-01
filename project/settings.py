@@ -132,3 +132,7 @@ STATIC_URL = '/static/'
 
 # custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# redirect
+LOGIN_REDIRECT_URL = 'pages:home'
+LOGOUT_REDIRECT_URL = 'pages:home'
