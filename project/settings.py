@@ -26,9 +26,7 @@ SECRET_KEY = 'x97+vxid@2&5xf(g7mgs3ca$4ar0d(s2_*m*+s3m&_jn1b8s$5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '172.17.0.1'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd party apps
+    'crispy_forms',
 
     # local apps
     'users.apps.UsersConfig',
@@ -86,7 +87,7 @@ DATABASES = {
         'NAME': 'bookstore',
         'USER': 'postgres',
         'PASSWORD': '9508',
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': 5432
     }
 }
@@ -129,6 +130,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 # custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -136,3 +143,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # redirect
 LOGIN_REDIRECT_URL = 'pages:home'
 LOGOUT_REDIRECT_URL = 'pages:home'
+
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
