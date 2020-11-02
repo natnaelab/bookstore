@@ -21,9 +21,6 @@ class HomePageTests(SimpleTestCase):
         """test if it displays the right home template"""
         self.assertTemplateUsed(self.response, 'home.html')
 
-    def test_homepage_contains_correct_html(self):
-        self.assertContains(self.response, 'Homepage')
-
     def test_homepage_url_resolves_homepageview(self):
         view = resolve('/')
         self.assertEqual(view.func.__name__, HomePageView.as_view().__name__)
